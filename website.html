@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .converter {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 0.5rem;
+            font-size: 1rem;
+            color: white;
+            background-color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="converter">
+            <div class="input-group">
+                <label for="celsius">Celsius (°C)</label>
+                <input type="number" id="celsius" placeholder="Enter Celsius">
+            </div>
+            <div class="input-group">
+                <label for="fahrenheit">Fahrenheit (°F)</label>
+                <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
+            </div>
+            <button onclick="convertTemperature()">Convert</button>
+        </div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const celsiusInput = document.getElementById('celsius');
+            const fahrenheitInput = document.getElementById('fahrenheit');
+            
+            if (celsiusInput.value !== '') {
+                const celsius = parseFloat(celsiusInput.value);
+                const fahrenheit = (celsius * 9/5) + 32;
+                fahrenheitInput.value = fahrenheit.toFixed(2);
+            } else if (fahrenheitInput.value !== '') {
+                const fahrenheit = parseFloat(fahrenheitInput.value);
+                const celsius = (fahrenheit - 32) * 5/9;
+                celsiusInput.value = celsius.toFixed(2);
+            }
+        }
+    </script>
+</body>
+</html>
